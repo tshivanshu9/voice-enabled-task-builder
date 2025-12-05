@@ -16,7 +16,7 @@ function TaskCreate() {
       <h2 className="text-xl font-semibold mb-4">Create Task</h2>
       <TaskForm onSubmit={handleSubmit} />
     </AppLayout>
-  )
+  );
 }
 
-export default TaskCreate
+export default TaskCreate;

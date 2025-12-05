@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom';
 import { deleteTask, getTask, updateTask } from '../api/tasks';
 import AppLayout from '../components/AppLayout';
-import { formatDate, formatPriority, formatTaskStatus } from '../utils/formatters';
+import {
+  formatDate,
+  formatPriority,
+  formatTaskStatus,
+} from '../utils/formatters';
 import { FiCalendar, FiStar, FiFlag, FiEdit, FiTrash2 } from 'react-icons/fi';
 
 function TaskDetails() {
@@ -27,24 +31,24 @@ function TaskDetails() {
     setIsEditing(true);
   };
 
-  const handleUpdate = async (e) => {
+  const handleUpdate = async e => {
     e.preventDefault();
     try {
       const updatedTask = await updateTask(id, editData);
       setTask(updatedTask.data);
       setIsEditing(false);
     } catch (error) {
-      console.error("Failed to update task:", error);
+      console.error('Failed to update task:', error);
     }
   };
 
   const handleDelete = async () => {
-    if (window.confirm("Are you sure you want to delete this task?")) {
+    if (window.confirm('Are you sure you want to delete this task?')) {
       try {
         await deleteTask(id);
         navigate('/');
       } catch (error) {
-        console.error("Failed to delete task:", error);
+        console.error('Failed to delete task:', error);
       }
     }
   };
@@ -58,24 +62,39 @@ function TaskDetails() {
   return (
     <AppLayout>
       {isEditing ? (
-        <form onSubmit={handleUpdate} className='space-y-4'>
+        <form onSubmit={handleUpdate} className="space-y-4">
           <div>
             <label className="block text-sm font-medium mb-1">Title</label>
-            <input type='text' value={editData.title}
-              onChange={(e) => setEditData({ ...editData, title: e.target.value })}
-              className="w-full px-3 py-2 border rounded" required />
+            <input
+              type="text"
+              value={editData.title}
+              onChange={e =>
+                setEditData({ ...editData, title: e.target.value })
+              }
+              className="w-full px-3 py-2 border rounded"
+              required
+            />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Description</label>
-            <textarea value={editData.description}
-              onChange={(e) => setEditData({ ...editData, description: e.target.value })}
-              className="w-full px-3 py-2 border rounded" rows="3" />
+            <label className="block text-sm font-medium mb-1">
+              Description
+            </label>
+            <textarea
+              value={editData.description}
+              onChange={e =>
+                setEditData({ ...editData, description: e.target.value })
+              }
+              className="w-full px-3 py-2 border rounded"
+              rows="3"
+            />
           </div>
           <div>
             <label className="block text-sm font-medium mb-1">Priority</label>
             <select
               value={editData.priority}
-              onChange={(e) => setEditData({ ...editData, priority: e.target.value })}
+              onChange={e =>
+                setEditData({ ...editData, priority: e.target.value })
+              }
               className="w-full px-3 py-2 border rounded"
             >
               <option value="">No priority</option>
@@ -89,7 +108,9 @@ function TaskDetails() {
             <label className="block text-sm font-medium mb-1">Status</label>
             <select
               value={editData.status}
-              onChange={(e) => setEditData({ ...editData, taskStatus: e.target.value })}
+              onChange={e =>
+                setEditData({ ...editData, taskStatus: e.target.value })
+              }
               className="w-full px-3 py-2 border rounded"
             >
               <option value="todo">To Do</option>
@@ -134,19 +155,25 @@ function TaskDetails() {
           </div>
 
           <div className="flex gap-4 mt-8">
-        <button onClick={handleEdit} className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 cursor-pointer">
-          <FiEdit />
-          Edit Task
-        </button>
-        <button onClick={handleDelete} className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 cursor-pointer">
-          <FiTrash2 />
-          Delete Task
-        </button>
-      </div>
+            <button
+              onClick={handleEdit}
+              className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 cursor-pointer"
+            >
+              <FiEdit />
+              Edit Task
+            </button>
+            <button
+              onClick={handleDelete}
+              className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 cursor-pointer"
+            >
+              <FiTrash2 />
+              Delete Task
+            </button>
+          </div>
         </>
       )}
     </AppLayout>
   );
 }
 
-export default TaskDetails
+export default TaskDetails;

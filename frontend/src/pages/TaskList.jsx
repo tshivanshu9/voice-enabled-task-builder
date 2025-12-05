@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { getTasks } from '../api/tasks';
 import AppLayout from '../components/AppLayout';
 import TaskCard from '../components/TaskCard';
@@ -8,7 +8,7 @@ function TaskList() {
 
   useEffect(() => {
     getTasks().then(res => setTasks(res.data));
-  }, [])
+  }, []);
 
   return (
     <AppLayout>
@@ -20,13 +20,11 @@ function TaskList() {
             <p className="text-gray-400">Start by creating your first task</p>
           </div>
         ) : (
-          tasks?.map(t => (
-            <TaskCard key={t._id} task={t} />
-          ))
+          tasks?.map(t => <TaskCard key={t._id} task={t} />)
         )}
       </div>
     </AppLayout>
-  )
+  );
 }
 
-export default TaskList
+export default TaskList;

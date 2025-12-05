@@ -1,5 +1,11 @@
 import mongoose from 'mongoose';
-import { ACTIVE_INACTIVE_ENUM, ACTIVE_INACTIVE_VALUES, PRIORITY_VALUES, TASK_STATUS_ENUM, TASK_STATUS_VALUES } from '../constants/enums.js';
+import {
+  ACTIVE_INACTIVE_ENUM,
+  ACTIVE_INACTIVE_VALUES,
+  PRIORITY_VALUES,
+  TASK_STATUS_ENUM,
+  TASK_STATUS_VALUES,
+} from '../constants/enums.js';
 const { Schema } = mongoose;
 
 const TaskSchema = new Schema({

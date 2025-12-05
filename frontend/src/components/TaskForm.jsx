@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 function TaskForm({ defaultValues = {}, onSubmit }) {
   const [form, setForm] = useState({
@@ -19,29 +19,50 @@ function TaskForm({ defaultValues = {}, onSubmit }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className='space-y-4 bg-white p-5 rounded border shadow'>
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-4 bg-white p-5 rounded border shadow"
+    >
       <div>
-        <label className='font-medium'>Title</label>
-        <input value={form.title} onChange={ e => update('title', e.target.value)}
-          className='w-full mt-1 p-2 border rounded' required/>
+        <label className="font-medium">Title</label>
+        <input
+          value={form.title}
+          onChange={e => update('title', e.target.value)}
+          className="w-full mt-1 p-2 border rounded"
+          required
+        />
       </div>
 
       <div>
-        <label className='font-medium'>Description</label>
-        <textarea value={form.description} onChange={ e => update('description', e.target.value)}
-          className='w-full mt-1 p-2 border rounded' rows="3" />
+        <label className="font-medium">Description</label>
+        <textarea
+          value={form.description}
+          onChange={e => update('description', e.target.value)}
+          className="w-full mt-1 p-2 border rounded"
+          rows="3"
+        />
       </div>
 
       <div>
-        <label className='font-medium'>Due Date</label>
-        <input type="date" value={form.dueDate} onChange={ e => update('dueDate', e.target.value)}
-          className='w-full mt-1 p-2 border rounded' />
+        <label className="font-medium">Due Date</label>
+        <input
+          type="date"
+          value={form.dueDate}
+          onChange={e => update('dueDate', e.target.value)}
+          className="w-full mt-1 p-2 border rounded"
+        />
       </div>
 
       <div className="flex gap-3">
         <div className="flex-1">
           <label className="font-medium">Priority</label>
-          <select name="priority" id="priority" value={form.priority} onChange={ e => update('priority', e.target.value)} className='w-full mt-1 p-2 border rounded'>
+          <select
+            name="priority"
+            id="priority"
+            value={form.priority}
+            onChange={e => update('priority', e.target.value)}
+            className="w-full mt-1 p-2 border rounded"
+          >
             <option>low</option>
             <option>medium</option>
             <option>high</option>
@@ -50,11 +71,15 @@ function TaskForm({ defaultValues = {}, onSubmit }) {
 
         <div className="flex-1">
           <label className="font-medium">Status</label>
-          <select value={form.status} onChange={ e => update('status', e.target.value)} className='w-full mt-1 p-2 border rounded'>
+          <select
+            value={form.status}
+            onChange={e => update('status', e.target.value)}
+            className="w-full mt-1 p-2 border rounded"
+          >
             <option>todo</option>
             <option>in-progress</option>
             <option>done</option>
-            </select>
+          </select>
         </div>
       </div>
 
@@ -65,7 +90,7 @@ function TaskForm({ defaultValues = {}, onSubmit }) {
         Save Task
       </button>
     </form>
-  )
+  );
 }
 
-export default TaskForm
+export default TaskForm;
