@@ -3,11 +3,10 @@ import Task from "../models/Task.js";
 
 export const createTask = async (req, res) => {
   try {
-    const { title, userId, description, dueDate, priority, taskStatus } = req.body;
+    const { title, description, dueDate, priority, taskStatus } = req.body;
 
     const newTask = new Task({
       title,
-      userId,
       description,
       dueDate,
       priority,
@@ -20,10 +19,9 @@ export const createTask = async (req, res) => {
   }
 };
 
-export const getTasksByUser = async (req, res) => {
+export const getTasks = async (req, res) => {
   try {
-    const { userid: userId } = req.headers;
-    const tasks = await Task.find({ userId, status: ACTIVE_INACTIVE_ENUM.ACTIVE });
+    const tasks = await Task.find({ status: ACTIVE_INACTIVE_ENUM.ACTIVE });
     res.status(200).json({ success: true, data: tasks });
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch tasks" });
