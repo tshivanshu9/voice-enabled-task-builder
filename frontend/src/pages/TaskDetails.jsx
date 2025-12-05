@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { deleteTask, getTask, updateTask } from '../api/tasks';
 import AppLayout from '../components/AppLayout';
 import { formatDate, formatPriority, formatTaskStatus } from '../utils/formatters';
+import { FiCalendar, FiStar, FiFlag, FiEdit, FiTrash2 } from 'react-icons/fi';
 
 function TaskDetails() {
   const { id } = useParams();
@@ -74,7 +75,7 @@ function TaskDetails() {
             <label className="block text-sm font-medium mb-1">Priority</label>
             <select
               value={editData.priority}
-              onChange={(e) => setEditData({...editData, priority: e.target.value})}
+              onChange={(e) => setEditData({ ...editData, priority: e.target.value })}
               className="w-full px-3 py-2 border rounded"
             >
               <option value="">No priority</option>
@@ -88,7 +89,7 @@ function TaskDetails() {
             <label className="block text-sm font-medium mb-1">Status</label>
             <select
               value={editData.status}
-              onChange={(e) => setEditData({...editData, taskStatus: e.target.value})}
+              onChange={(e) => setEditData({ ...editData, taskStatus: e.target.value })}
               className="w-full px-3 py-2 border rounded"
             >
               <option value="todo">To Do</option>
@@ -112,31 +113,36 @@ function TaskDetails() {
             </button>
           </div>
         </form>
-      ):(
+      ) : (
         <>
           <h2 className="text-2xl font-bold">{task.title}</h2>
           <p className="mt-2 text-gray-700">{task.description}</p>
 
-          <div className="mt-4">
-            <p>📅 Due: {formatDate(task.dueDate)}</p>
-            <p>⭐ Priority: {formatPriority(task.priority)}</p>
-            <p>📌 Status: {formatTaskStatus(task.taskStatus)}</p>
+          <div className="mt-4 space-y-2">
+            <div className="flex items-center gap-2 text-gray-700">
+              <FiCalendar className="text-blue-500" />
+              <span>Due: {formatDate(task.dueDate)}</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-700">
+              <FiStar className="text-orange-500" />
+              <span>Priority: {formatPriority(task.priority)}</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-700">
+              <FiFlag className="text-green-500" />
+              <span>Status: {formatTaskStatus(task.taskStatus)}</span>
+            </div>
           </div>
 
-          <div className="flex gap-3 mt-6">
-            <button
-              onClick={handleEdit}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer"
-            >
-              Edit Task
-            </button>
-            <button
-              onClick={handleDelete}
-              className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 cursor-pointer"
-            >
-              🚮 Delete Task
-            </button>
-          </div>
+          <div className="flex gap-4 mt-8">
+        <button onClick={handleEdit} className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 cursor-pointer">
+          <FiEdit />
+          Edit Task
+        </button>
+        <button onClick={handleDelete} className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 cursor-pointer">
+          <FiTrash2 />
+          Delete Task
+        </button>
+      </div>
         </>
       )}
     </AppLayout>
