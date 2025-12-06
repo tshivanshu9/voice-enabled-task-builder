@@ -14,17 +14,20 @@ A modern task management application that allows users to create tasks using voi
 ### Installation Steps
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd voice-todo
    ```
 
 2. **Install root dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Backend Setup**
+
    ```bash
    cd backend
    npm install
@@ -56,11 +59,13 @@ GEMINI_API_KEY=your_gemini_api_key_here
 ### Running the Application
 
 1. **Start both frontend and backend** (from root directory):
+
    ```bash
    npm run both
    ```
 
 2. **Or run individually:**
+
    ```bash
    # Backend only
    npm run backend
@@ -80,6 +85,7 @@ No initial seed data required. The application works with an empty database.
 ## 🛠 Tech Stack
 
 ### Frontend
+
 - **React 18** - UI library
 - **Vite** - Build tool and dev server
 - **React Router** - Client-side routing
@@ -87,6 +93,7 @@ No initial seed data required. The application works with an empty database.
 - **Web Speech API** - Browser speech recognition
 
 ### Backend
+
 - **Node.js** - Runtime environment
 - **Express.js** - Web framework
 - **MongoDB** - Database
@@ -94,10 +101,12 @@ No initial seed data required. The application works with an empty database.
 - **Express Validator** - Request validation
 
 ### AI & Services
+
 - **Google Gemini AI** - Natural language processing
 - **Speech Recognition API** - Voice input capture
 
 ### Key Libraries
+
 - **concurrently** - Run multiple npm scripts
 - **cors** - Cross-origin resource sharing
 - **dotenv** - Environment variable management
@@ -105,6 +114,7 @@ No initial seed data required. The application works with an empty database.
 ## 📚 API Documentation
 
 ### Base URL
+
 ```
 http://localhost:8000/api
 ```
@@ -112,13 +122,16 @@ http://localhost:8000/api
 ### Tasks Endpoints
 
 #### GET /tasks
+
 Get all tasks with pagination
 
 **Query Parameters:**
+
 - `page` (optional): Page number (default: 1)
 - `limit` (optional): Items per page (default: 10)
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -142,9 +155,11 @@ Get all tasks with pagination
 ```
 
 #### GET /tasks/:id
+
 Get a specific task
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -160,9 +175,11 @@ Get a specific task
 ```
 
 #### POST /tasks
+
 Create a new task
 
 **Request Body:**
+
 ```json
 {
   "title": "Buy groceries",
@@ -174,6 +191,7 @@ Create a new task
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -190,9 +208,11 @@ Create a new task
 ```
 
 #### PUT /tasks/:id
+
 Update a task
 
 **Request Body:** (partial update supported)
+
 ```json
 {
   "title": "Updated title",
@@ -201,9 +221,11 @@ Update a task
 ```
 
 #### DELETE /tasks/:id
+
 Delete a task
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -214,9 +236,11 @@ Delete a task
 ### Parse Endpoint
 
 #### POST /parse
+
 Parse natural language text into task structure
 
 **Request Body:**
+
 ```json
 {
   "text": "Call mom tomorrow at high priority"
@@ -224,6 +248,7 @@ Parse natural language text into task structure
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -240,6 +265,7 @@ Parse natural language text into task structure
 ### Error Responses
 
 **400 Bad Request:**
+
 ```json
 {
   "success": false,
@@ -253,6 +279,7 @@ Parse natural language text into task structure
 ```
 
 **404 Not Found:**
+
 ```json
 {
   "error": "Task not found"
@@ -260,6 +287,7 @@ Parse natural language text into task structure
 ```
 
 **500 Internal Server Error:**
+
 ```json
 {
   "error": "Failed to fetch tasks"
@@ -283,6 +311,7 @@ Parse natural language text into task structure
 ### Data Models
 
 **Task Model:**
+
 - `title`: Short, descriptive task name
 - `description`: Detailed task information
 - `dueDate`: Optional due date in YYYY-MM-DD format
@@ -387,7 +416,7 @@ npm run backend
 - Safari 14.1+
 - Edge 79+
 
-*Note: Speech Recognition API support varies by browser*
+_Note: Speech Recognition API support varies by browser_
 
 ## 🔐 Security Considerations
 
