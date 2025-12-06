@@ -21,8 +21,24 @@ export const createTask = async (req, res) => {
 
 export const getTasks = async (req, res) => {
   try {
-    const tasks = await Task.find({ status: ACTIVE_INACTIVE_ENUM.ACTIVE });
-    res.status(200).json({ success: true, data: tasks });
+    const query = req.query || {};
+    const limit = parseInt(query.limit, 10) || 10;
+    const page = parseInt(query.page, 10) || 1;
+    const skip = (page - 1) * limit;
+    const [tasks, totalCount] = await Promise.all([
+      Task.find({ status: ACTIVE_INACTIVE_ENUM.ACTIVE })
+        .skip(skip)
+        .limit(limit)
+        .sort({ _id: -1 }),
+      Task.countDocuments({ status: ACTIVE_INACTIVE_ENUM.ACTIVE }),
+    ]);
+    res
+      .status(200)
+      .json({
+        success: true,
+        data: tasks,
+        paginate: { totalCount, page, limit },
+      });
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch tasks' });
   }
