@@ -15,6 +15,6 @@ Rules:
 - If no priority mentioned → null.
 - If no status mentioned → "todo".
 - Title should be a short summary (max 10 words).
-- Description should contain the remaining context.
+- Description should contain the remaining context. But the description should not repeat the title and it should feel natural. If the user commands you to create a task, then the description should be something like - Remember to [task details]. Having said that, you can play around with the words, dont' always use "Remember to".
 - Do NOT include any text outside of JSON.
 `;
