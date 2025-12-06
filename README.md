@@ -6,7 +6,7 @@ A modern task management application that allows users to create tasks using voi
 
 ### Prerequisites
 
-- **Node.js**: Version 22 required
+- **Node.js**: Version 22 required (project built and tested with v22)
 - **MongoDB**: Local installation or MongoDB Atlas account
 - **Google AI Studio**: API key for Gemini model
 - **Modern Browser**: Chrome, Firefox, Safari (for Speech Recognition API)
