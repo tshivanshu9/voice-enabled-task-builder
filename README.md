@@ -429,6 +429,7 @@ _Note: Speech Recognition API support varies by browser_
 - Email notifications
 - Mobile app development
 - Advanced voice commands (edit, delete via voice)
+- Better UI with loaders, message popups, etc.
 
 ---
 
