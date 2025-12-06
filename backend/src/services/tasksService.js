@@ -32,13 +32,11 @@ export const getTasks = async (req, res) => {
         .sort({ _id: -1 }),
       Task.countDocuments({ status: ACTIVE_INACTIVE_ENUM.ACTIVE }),
     ]);
-    res
-      .status(200)
-      .json({
-        success: true,
-        data: tasks,
-        paginate: { totalCount, page, limit },
-      });
+    res.status(200).json({
+      success: true,
+      data: tasks,
+      paginate: { totalCount, page, limit },
+    });
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch tasks' });
   }

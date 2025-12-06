@@ -1,7 +1,10 @@
 const BASE = 'http://localhost:8000/api';
 
-export async function getTasks() {
-  return fetch(`${BASE}/tasks`).then(r => r.json());
+export async function getTasks(params = {}) {
+  const { page = 1, limit = 5 } = params;
+  const searchParams = new URLSearchParams({ page, limit });
+  const url = `${BASE}/tasks?${searchParams.toString()}`;
+  return fetch(url).then(r => r.json());
 }
 
 export async function getTask(id) {
