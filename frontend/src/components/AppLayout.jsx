@@ -8,7 +8,7 @@ function AppLayout({ children }) {
         <header className="bg-white rounded-lg shadow-md p-6 mb-8">
           <Link to="/" className="block text-center mb-6">
             <h1 className="text-4xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              🎤 Voice Task Manager
+              🎤 Voice Enabled Task Manager
             </h1>
             <p className="text-gray-600 mt-2">
               Speak your tasks into existence
